@@ -4,13 +4,28 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import os
+import urllib.request
+from urllib.parse import urljoin
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
 
 def submit_coupon():
-    # Set up the Selenium driver
-    driver = webdriver.Chrome()
+    # Define the URL of the webpage
+    url = "https://www.real.discount/"
     
-    # Navigate to the Real Discount contact page
-    driver.get('https://www.real.discount/contact/')
+    # Set up the Chrome driver
+    chrome_driver_path = "chromedriver.exe"  # Replace with the actual path to chromedriver executable
+    service = Service(chrome_driver_path)
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")  # Run Chrome in headless mode
+    driver = webdriver.Chrome(service=service, options=options)
+    
+    # Load the webpage
+    driver.get(url)
+
     
     # Wait for the page to load
     wait = WebDriverWait(driver, 10)
