@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def submit_coupon():
     # Set up the Selenium driver
+    driver = webdriver.Chrome(executable_path=ChromeDriverManager(version="94.0.4606.61").install())
     driver = webdriver.Chrome()
     
     # Navigate to the Real Discount contact page
