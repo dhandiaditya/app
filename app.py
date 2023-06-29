@@ -6,12 +6,21 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+
+
 
 def submit_coupon():
-    # Set up the Selenium driver
-    #driver = webdriver.Chrome(executable_path=ChromeDriverManager(version="94.0.4606.61").install())
-    driver = webdriver.Chrome()
+    @st.experimental_singleton
+    def get_driver():
+        return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     
+    options = Options()
+    options.add_argument('--disable-gpu')
+    options.add_argument('--headless')
+    
+    driver = get_driver()
     # Navigate to the Real Discount contact page
     driver.get('https://www.real.discount/contact/')
     
