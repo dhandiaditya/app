@@ -9,8 +9,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 def submit_coupon():
     # Set up the Selenium driver
-    driver = webdriver.Chrome(executable_path=ChromeDriverManager(version="94.0.4606.61").install())
-    #driver = webdriver.Chrome()
+    #driver = webdriver.Chrome(executable_path=ChromeDriverManager(version="94.0.4606.61").install())
+    driver = webdriver.Chrome()
     
     # Navigate to the Real Discount contact page
     driver.get('https://www.real.discount/contact/')
