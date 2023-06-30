@@ -1,3 +1,4 @@
+import time
 import streamlit as st
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -17,8 +18,11 @@ def submit_coupon():
     # Load the webpage
     driver.get(url)
 
+    # Add a delay if necessary
+    time.sleep(5)
+
     # Wait for the page to load
-    wait = WebDriverWait(driver, 20)  # Increase the timeout value
+    wait = WebDriverWait(driver, 10)
     wait.until(EC.presence_of_element_located((By.ID, 'urls')))  # Use a different locator strategy if necessary
 
     # Find the text area for the coupon link and enter the link
