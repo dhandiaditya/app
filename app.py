@@ -9,7 +9,7 @@ def submit_coupon():
     url = "https://www.real.discount/"
     
     # Set up the Chrome driver
-    chrome_driver_path = "chromedriver.exe"  # Replace with the actual path to chromedriver executable
+    chrome_driver_path = "/chromedriver.exe/"  # Replace with the actual path to chromedriver executable
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")  # Run Chrome in headless mode
     driver = webdriver.Chrome(options=options)
