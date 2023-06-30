@@ -22,8 +22,8 @@ def submit_coupon():
     time.sleep(5)
 
     # Wait for the page to load
-    wait = WebDriverWait(driver, 10)
-    wait.until(EC.presence_of_element_located((By.ID, 'urls')))  # Use a different locator strategy if necessary
+    wait = WebDriverWait(driver, 30)  # Increase the timeout value if needed
+    wait.until(EC.visibility_of_element_located((By.ID, 'urls')))  # Use a different locator strategy if necessary
 
     # Find the text area for the coupon link and enter the link
     textarea = driver.find_element(By.ID, "urls")  # Use a different locator strategy if necessary
