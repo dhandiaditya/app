@@ -1,14 +1,8 @@
-
 import streamlit as st
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import os
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
-
 
 def submit_coupon():
     # Define the URL of the webpage
@@ -16,21 +10,19 @@ def submit_coupon():
     
     # Set up the Chrome driver
     chrome_driver_path = "chromedriver.exe"  # Replace with the actual path to chromedriver executable
-    service = Service(chrome_driver_path)
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")  # Run Chrome in headless mode
-    driver = webdriver.Chrome(service=service, options=options)
+    driver = webdriver.Chrome(options=options)
     
     # Load the webpage
     driver.get(url)
 
-    
     # Wait for the page to load
     wait = WebDriverWait(driver, 10)
     wait.until(EC.presence_of_element_located((By.NAME, 'urls')))
     
     # Find the text area for the coupon link and enter the link
-    textarea = wait.until(EC.presence_of_element_located((By.NAME, "urls")))
+    textarea = driver.find_element(By.NAME, "urls")
     final_url = "https://www.udemy.com/course/oops-with-python-object-oriented-programming-language/?couponCode=052836015188\nhttps://www.udemy.com/course/advanced-postgresql-for-professionals/?couponCode=051227445896"
     textarea.send_keys(final_url)
     
